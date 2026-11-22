@@ -37,6 +37,22 @@ xelatex binomial-square-proof-zh.tex
 xelatex sun-binomial-powers-proof-zh.tex
 ~~~
 
+## Lean verification
+
+项目固定使用 Lean 4.19.0 和同版本的 Mathlib。安装 Lean 后，在仓库根目录运行：
+
+~~~sh
+lake build
+~~~
+
+[SunBinomial.lean](SunBinomial.lean) 从截断二项式多项式的定义出发，给出以下经 Lean 检查的定理：
+
+- 对所有 $m\ge4,\ n\ge23$，差多项式的 $q^2$ 系数严格为负。
+- 四次在 $n=23$ 的 $q^2$ 系数精确等于 $-2\,999\,950$。
+- 对 $m=2,3$ 及所有 $n\ge1$，差多项式的 $q^2$ 系数严格为正。
+
+二次和三次的全系数 $q$-对数凸性证明见上面的中文 LaTeX。它们的完整证明尚未在 Lean 中形式化。
+
 ## Sources and attribution
 
 - Zhi-Wei Sun formulated the all-powers statement in Conjecture 1.1(i). [Paper](https://arxiv.org/abs/2505.02767)
