@@ -51,6 +51,8 @@ lake build
 - 四次在 $n=23$ 的 $q^2$ 系数精确等于 $-2\,999\,950$。
 - 对 $m=2,3$ 及所有 $n\ge1$，差多项式的 $q^2$ 系数严格为正。
 
+[CubicAlgebra.lean](SunBinomial/CubicAlgebra.lean) 另外核验了三次证明中的消项恒等式、正的缩放因子，以及高次边界证书中三个负单项式的吸收。这些是对符号参数成立的代数定理。
+
 二次和三次的全系数 $q$-对数凸性证明见上面的中文 LaTeX。它们的完整证明尚未在 Lean 中形式化。
 
 ## Sources and attribution

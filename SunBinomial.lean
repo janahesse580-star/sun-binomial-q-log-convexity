@@ -6,6 +6,7 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
+import SunBinomial.CubicAlgebra
 
 /-! The binomial-power conjecture fails for every exponent at least four. -/
 
