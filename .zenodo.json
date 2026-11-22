@@ -1,0 +1,43 @@
+{
+  "title": "Sun's binomial-power q-log-convexity conjecture: m=2,3 proofs and m>=4 counterexamples",
+  "description": "<p>For integers m &ge; 2, let R<sub>n</sub><sup>(m)</sup>(q) = &sum;<sub>k=0</sub><sup>n</sup> C(n+k, k)<sup>m</sup> q<sup>k</sup> and &Delta;<sub>n</sub><sup>(m)</sup>(q) = R<sub>n&minus;1</sub><sup>(m)</sup>(q) R<sub>n+1</sub><sup>(m)</sup>(q) &minus; (R<sub>n</sub><sup>(m)</sup>(q))<sup>2</sup>. The second part of Zhi-Wei Sun's Conjecture 1.1(i) (arXiv:2505.02767) asserts that (R<sub>n</sub><sup>(m)</sup>(q))<sub>n&ge;0</sub> is q-log-convex for every integer m &ge; 2.</p><p><strong>Result.</strong> The conjecture holds for m = 2 and m = 3, and fails for every m &ge; 4. For all m &ge; 4 and n &ge; 23, the coefficient of q<sup>2</sup> in &Delta;<sub>n</sub><sup>(m)</sup>(q) is strictly negative; in particular, [q<sup>2</sup>]&Delta;<sub>23</sub><sup>(4)</sup>(q) = 276<sup>4</sup> + 325<sup>4</sup> &minus; 2&middot;300<sup>4</sup> + 575<sup>4</sup> &minus; 576<sup>4</sup> = &minus;2,999,950.</p><p>This archive contains the Chinese proof notes (LaTeX sources and compiled PDFs), exact rational verification scripts using only the Python 3 standard library, and a Lean 4.19.0 / Mathlib project. The Lean development completely formalizes the disproof for all m &ge; 4, the explicit fourth-power counterexample, the q<sup>2</sup> coefficient positivity for m = 2, 3, and selected algebraic identities from the cubic proof; the full coefficientwise positivity proofs for m = 2, 3 are in the LaTeX notes and exact rational certificates.</p><p>Earlier counterexamples by Qiping Zhou (m = 5, n = 7) and Shivam Patel (m = 4, n = 23, and eventual failure for each fixed m &ge; 4), as well as the theorem of Chen, Tang, Wang, and Yang used in the m = 2 low-degree case, are credited in the README and proof sources.</p>",
+  "creators": [
+    {
+      "name": "janahesse580-star"
+    }
+  ],
+  "keywords": [
+    "q-log-convexity",
+    "combinatorics",
+    "binomial coefficients",
+    "Zhi-Wei Sun conjecture",
+    "computer-assisted proof",
+    "Lean 4",
+    "Mathlib",
+    "counterexample"
+  ],
+  "license": "CC-BY-4.0",
+  "upload_type": "software",
+  "language": "zho",
+  "version": "v1.0.2",
+  "related_identifiers": [
+    {
+      "identifier": "10.48550/arXiv.2505.02767",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "10.48550/arXiv.0810.2247",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://github.com/janahesse580-star/sun-binomial-q-log-convexity",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}

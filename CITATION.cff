@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this archive, please cite the Zenodo concept DOI below."
+title: "Sun's binomial-power q-log-convexity conjecture: m=2,3 proofs and m>=4 counterexamples"
+authors:
+  - family-names: "janahesse580-star"
+version: "v1.0.2"
+doi: "10.5281/zenodo.24437479"
+date-released: "2026-11-22"
+license: "CC-BY-4.0"
+url: "https://github.com/janahesse580-star/sun-binomial-q-log-convexity"
