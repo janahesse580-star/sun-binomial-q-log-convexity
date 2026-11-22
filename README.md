@@ -59,7 +59,7 @@ lake build
 
 - Zhi-Wei Sun formulated the all-powers statement in Conjecture 1.1(i). [Paper](https://arxiv.org/abs/2505.02767)
 - Chen, Tang, Wang, and Yang proved the $q$-log-convexity of the ordinary binomial-square polynomials $\sum_k\binom nk^2q^k$. The proof for $R_n^{(2)}$ uses their theorem for low-degree coefficients. [Paper](https://arxiv.org/abs/0810.2247)
-- Qiping Zhou gave the $m=5,\ n=7$ counterexample. [MathOverflow answer and discussion](https://mathoverflow.net/questions/479301/on-the-polynomials-sum-k-0n-binomnkkm-qk)
-- Shivam Patel recorded the fourth-power counterexample and eventual failure for each fixed exponent $m\ge4$. The note here gives a single bound, $n\ge23$, for all such exponents. [Public proof note](https://mathdb.com/p/368293/sun-s-q-log-convexity-conjecture-for-binomial-sums-and-the-p)
+- Qiping Zhou gave the $m=5,\ n=7$ counterexample, with $[q^2]\Delta_7^{(5)}=-499\,140$. [MathOverflow answer and discussion](https://mathoverflow.net/questions/479301/on-the-polynomials-sum-k-0n-binomnkkm-qk)
+- Shivam Patel gave the $m=4,\ n=23$ counterexample displayed above and proved eventual failure for each fixed exponent $m\ge4$. The proof here verifies one threshold, $n\ge23$, that works for every $m\ge4$. [Public proof note](https://mathdb.com/p/368293/sun-s-q-log-convexity-conjecture-for-binomial-sums-and-the-p)
 
 The square and cubic proof notes were developed through iterative, user-directed work with Codex. The accompanying exact checks are included for independent review. Priority is not asserted.

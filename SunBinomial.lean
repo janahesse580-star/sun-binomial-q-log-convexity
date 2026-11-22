@@ -8,7 +8,16 @@ import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
 import SunBinomial.CubicAlgebra
 
-/-! The binomial-power conjecture fails for every exponent at least four. -/
+/-! The binomial-power conjecture fails for every exponent at least four.
+
+Zhi-Wei Sun posed the conjecture in [Conjecture 1.1(i)](https://arxiv.org/abs/2505.02767).
+Qiping Zhou gave the exponent-five counterexample on
+[MathOverflow](https://mathoverflow.net/questions/479301/).
+Shivam Patel gave the exponent-four counterexample at index 23 and proved eventual failure
+for each fixed exponent at least four in a
+[public proof note](https://mathdb.com/p/368293/sun-s-q-log-convexity-conjecture-for-binomial-sums-and-the-p).
+The verification below proves the uniform threshold 23 for all exponents at least four.
+-/
 
 open Finset Polynomial Set
 open scoped BigOperators
@@ -227,7 +236,7 @@ theorem coeff_two_negative (m n : ℕ) (hm : 4 ≤ m) (hn : 23 ≤ n) :
   have h : (23 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn
   linarith
 
-/-- The explicit fourth-power counterexample from the proof note. -/
+/-- Shivam Patel's explicit fourth-power counterexample at index 23. -/
 theorem fourth_counterexample : (delta 4 23).coeff 2 = -2999950 := by
   rw [coeff_two_delta 4 23 (by decide)]
   norm_num [loss, a, b, c, d, e]
