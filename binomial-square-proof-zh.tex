@@ -1,0 +1,230 @@
+% !TeX program = xelatex
+% UTF-8 source. Compile twice with XeLaTeX, or once with Tectonic.
+% Keep verify_binomial_square_proof.py alongside this source for the optional
+% standalone certificate check. No external files are needed to compile the PDF.
+\documentclass[11pt,UTF8,fontset=fandol,scheme=plain]{ctexart}
+\usepackage[a4paper,left=24mm,right=24mm,top=24mm,bottom=23mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,xcolor,fancyhdr}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\definecolor{proofInk}{HTML}{17283A}
+\definecolor{proofAccent}{HTML}{145270}
+\definecolor{proofPale}{HTML}{EDF5F8}
+\hypersetup{pdftitle={截断二项式平方和的 q-对数凸性},pdfsubject={中文证明与精确代数证书},linkcolor=proofAccent,citecolor=proofAccent,urlcolor=proofAccent}
+\ctexset{
+  section={format=\Large\bfseries\color{proofAccent},name={,},number=\arabic{section},aftername=\quad,beforeskip=14pt,afterskip=7pt},
+  subsection={format=\normalsize\bfseries\color{proofInk},name={,},aftername=\quad,beforeskip=9pt,afterskip=4pt}
+}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 2pt}
+\renewcommand{\arraystretch}{1.17}
+\renewcommand{\refname}{参考文献}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{proofAccent}截断二项式平方和的 \(q\)-对数凸性}
+\fancyhead[R]{\small\color{proofAccent}中文证明}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+
+\newcommand{\coef}[1]{[q^{#1}]}
+\newcommand{\Dx}{D_{n,d}}
+\newcommand{\ellbound}{\ell}
+\newcommand{\Nzero}{\mathcal{N}_0}
+\newcommand{\None}{\mathcal{N}_1}
+\newcommand{\Nfour}{\mathcal{N}_4}
+
+\begin{document}
+\thispagestyle{empty}
+\vspace*{4mm}
+{\LARGE\bfseries\color{proofInk}截断二项式平方和的 \(q\)-对数凸性\par}
+\vspace{4mm}
+{\normalsize\color{proofAccent}中文证明与精确代数证书\par}
+\vspace{3mm}
+
+令
+\[
+  P_n(q)=\sum_{k=0}^{n}\binom{n+k}{k}^{\!2}q^k,
+  \qquad \Dx=\coef{d}\bigl(P_{n-1}(q)P_{n+1}(q)-P_n(q)^2\bigr).
+\]
+\noindent\colorbox{proofPale}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}
+  \vspace{3pt}\textbf{定理}\quad 对每个整数 \(n\ge1\)，若 \(1\le d\le2n\)，则 \(\Dx>0\)。
+  常数项为零。因此序列 \((P_n(q))_{n\ge0}\) 是 \(q\)-对数凸的。\vspace{3pt}
+\end{minipage}}
+
+这是孙智伟提出的二项式多项式猜想中指数为 \(2\) 的情形~\cite[猜想 1.1(i)]{sun}。低次系数可以用已知的二项式平方和定理处理。对受截断影响的系数，证明将相邻项相消，把无限多个 \((n,d)\) 的符号判定归结为五次有限的多项式展开。最后的核验只用有理数运算。
+
+\section{低次系数与最高两次系数}
+
+\textbf{低次系数.}
+当 \(d<n\) 时，计算 \(\Dx\) 用到的每项都在截断范围内。令
+\[
+  F_n(q)=\sum_{k\ge0}\binom{n+k}{k}^{\!2}q^k,
+  \qquad Q_n(q)=\sum_{k=0}^{n}\binom{n}{k}^{\!2}q^k.
+\]
+欧拉变换给出 \(F_n(q)=(1-q)^{-2n-1}Q_n(q)\)。因此
+\[
+  F_{n-1}F_{n+1}-F_n^2
+  =(1-q)^{-4n-2}\bigl(Q_{n-1}Q_{n+1}-Q_n^2\bigr).
+\]
+Chen 等人的定理~\cite{chen}表明右侧括号里的多项式逐项非负，其 \(q\) 的系数为 \((n-1)^2+(n+1)^2-2n^2=2\)。乘上的幂级数各项系数都为正，故 \(1\le d<n\) 时 \(\Dx>0\)。常数项直接相消。\(n=1\) 时多项式之差为 \(q+20q^2\)。以下设 \(n\ge2\)。
+
+\textbf{最高两次系数.}
+令 \(s=2n-d\)。若 \(s=0\) 或 \(s=1\)，把 \(P_n^2\) 的下标对 \((i,j)\) 与 \(P_{n-1}P_{n+1}\) 的 \((i-1,j+1)\) 配对，其中 \(i+j=d\)。新旧二项式乘积在平方前的比为
+\[
+  R_{ij}=\frac{ni(n+j+1)(n+j+2)}{(n+1)(j+1)(n+i-1)(n+i)}.
+\]
+这个比可写成关于 \(i\) 和关于 \(j\) 的两个因子的乘积，故 \(R_{ij}R_{ji}=R_{ii}R_{jj}\)。对 \(k=i,j\)，比值 \(R_{kk}\) 的分子减分母为
+\[
+  (n+k)\bigl(1-(n-k)^2\bigr)+2nk>0,
+\]
+因为 \(n-k\in\{0,1\}\)。每对交换下标后的权重相同，而 \((R_{ij}^2+R_{ji}^2)/2\ge R_{ij}R_{ji}>1\)，所以这两个次数的系数也严格为正。
+
+\clearpage
+\section{用相邻项相消改写高次系数}
+
+现在设 \(n\le d\le2n-2\)。记
+\[
+  s=2n-d\ge2,\qquad \ellbound=n-s=d-n,\qquad z=d/2,
+  \qquad a=n+z,\qquad K=n^4(n+1)^2.
+\]
+对 \(\ellbound\le i\le n\)，令 \(j=d-i\)、\(t=i-z\)，并设
+\begin{align*}
+  X_i&=\binom{n-1+i}{i}^{\!2}\binom{n+1+j}{j}^{\!2}, &
+  Y_i&=\binom{n+i}{i}^{\!2}\binom{n+j}{j}^{\!2},\\
+  W_i&=\binom{n-1+i}{i}^{\!2}\binom{n-1+j}{j}^{\!2}.
+\end{align*}
+\(X_{\ellbound-1}\) 使用同一公式，约定 \(\ellbound=0\) 时 \(X_{-1}=0\)。\(P_{n-1}P_{n+1}\) 的求和下标是 \(\max(0,\ellbound-1)\le i\le n-1\)，而 \(P_n^2\) 的下标是 \(\ellbound\le i\le n\)。所以
+\begin{equation}
+  \Dx=\sum_{i=\ellbound}^{n}(X_i-Y_i)+X_{\ellbound-1}-X_n.
+  \label{eq:split}
+\end{equation}
+
+权重 \(W_i\) 在交换 \(i,j\) 后不变。把 \(i\) 与 \(j\) 的贡献平均，便把 \(K\sum_i(X_i-Y_i)\) 写成 \(\sum_i W_i A(t)\)，其中
+\[
+ A(t)=\frac{n^2}{2}\sum_{\varepsilon\in\{-1,1\}}
+   (a+\varepsilon t)^2(a+1+\varepsilon t)^2
+   -(n+1)^2(a^2-t^2)^2.
+\]
+
+对任意函数 \(f\)，定义
+\[
+  E_f(i)=(n+i)^2j^2 f(i+1)-i^2(n+j)^2 f(i).
+\]
+相邻权重之比给出 \(W_i(n+i)^2j^2=W_{i+1}(i+1)^2(n+j-1)^2\)。乘上 \(f(i+1)\) 后，这正是两项相消所需的关系。因此
+\begin{equation}
+ \sum_{i=\ellbound}^{n}W_i E_f(i)
+ =4n^2\ellbound^2W_n\bigl(f(n+1)-f(\ellbound)\bigr).
+ \label{eq:telescoping}
+\end{equation}
+
+取 \(f_1(i)=2(i-z)-1\) 与 \(f_3(i)=f_1(i)^3-f_1(i)\)。两者的端点函数值之差分别为 \(2(s+1)\) 和 \(2(s+1)s(s+2)\)。定义以下几个系数
+\begin{align*}
+ m&=(2n+1)a+n, & C&=m/d, & V&=4(3az-2n),\\
+ U&=d(-4na+2n^2-2n)+4(n+1)n^2,\\[-2pt]
+ r_2&=aU/d, & r_4&=(8n+2)C-(2n+1),\\
+ v_2&=adV, & v_4&=-(32n+48)az+16n+24n^2, & v_6&=32n+24.
+\end{align*}
+将 \(i=z+t,\ j=z-t\) 代入并展开，会得到
+\begin{equation}
+  A(t)+C E_{f_1}(i)=r_2t^2+r_4t^4,
+  \qquad E_{f_3}(i)=v_2t^2+v_4t^4+v_6t^6.
+  \label{eq:expand}
+\end{equation}
+第一式的常数项相消，是因为 \(A(0)=-2Ca^2z^2\)，而 \(E_{f_1}\) 的常数项为 \(2a^2z^2\)。展开时也可用 \((n+i)j=az-t^2-nt\) 和 \(i(n+j)=az-t^2+nt\) 来直接收集偶次项。
+
+\clearpage
+\section{把加权和降为两个下界}
+
+由于 \(z\ge n/2\)、\(a\ge3n/2\) 且 \(n\ge2\)，有 \(V>0\) 及 \(v_2>0\)。取
+\[
+ B=\max\{0,-r_2/v_2\},\qquad
+ S_B(t)=(r_2+Bv_2)t^2+(r_4+Bv_4)t^4+Bv_6t^6.
+\]
+二次项和六次项系数非负。当 \(B=0\) 时，四次项系数 \(r_4>0\)，因为 \(C\ge2n+1\)。当 \(B=-r_2/v_2>0\) 时，四次项的正性由第~\ref{sec:certificate} 节的第一项检查给出。
+
+为计入移走和补入的边界项，设
+\begin{align*}
+ H_0&=\left(\frac{4n^2(2n+1)\ellbound}{d-1}\right)^2
+       -\bigl(nd(d+1)\bigr)^2 -8n^2\ellbound^2(s+1)C,\\
+ H_1&=-8n^2\ellbound^2(s+1)s(s+2).
+\end{align*}
+其中 \(KX_{\ellbound-1}/W_n\) 和 \(KX_n/W_n\) 分别等于 \(H_0\) 中的两个平方。把式~\eqref{eq:expand} 代回式~\eqref{eq:split}，并用式~\eqref{eq:telescoping} 计入两个端点，得到
+\begin{equation}
+  \frac{K\Dx}{W_n}=H_0+BH_1+\sum_{i=\ellbound}^{n}\frac{W_i}{W_n}S_B(i-z).
+  \label{eq:identity}
+\end{equation}
+
+序列 \(i\mapsto\binom{n-1+i}{i}\) 的相邻两项之比为 \((n+i)/(i+1)\)，随 \(i\) 增大而递减。将这个序列和它反向排列的对应项相乘再平方，得到对称且对数凹的权重序列 \(W_i\)。它在端点取最小值，因此 \(W_i\ge W_n\)。于是式~\eqref{eq:identity} 中的加权和至少为 \(\sum_i S_B(i-z)\)。
+
+令 \(M_b=\sum_{k=0}^{s}(k-s/2)^b\)。展开幂并求和可得
+\begin{align*}
+  M_2 &= \frac{s(s+1)(s+2)}{12},\\
+  M_4 &= \frac{M_2(3s^2+6s-4)}{20},\\
+  M_6 &= \frac{M_2(3s^4+12s^3-24s+16)}{112}.
+\end{align*}
+于是只需证明以下两个下界严格为正
+\begin{align}
+  L_0&=H_0+r_2M_2+r_4M_4
+       &&\text{当 } B=0, \label{eq:L0}\\
+  L_1&=H_0+r_4M_4-\frac{U}{d^2V}\bigl(H_1+v_4M_4+v_6M_6\bigr)
+       &&\text{当 } B=-r_2/v_2. \label{eq:L1}
+\end{align}
+第二式用了 \(-r_2/v_2=-U/(d^2V)\)。下一节给出 \(L_0,L_1\) 在整个 \(s\ge2,\ \ellbound\ge0\) 区域上的正性证书。
+
+\clearpage
+\section{有限的精确代数证书}\label{sec:certificate}
+
+令 \(e=d-1\)、\(V_0=dr_4\)、\(H_*=de^2H_0\)。需要检查的三个分子为
+\begin{align*}
+  \Nfour &= d V V_0-Uv_4,\\
+  \Nzero &= H_*+e^2(aUM_2+V_0M_4),\\
+  \None &= dVH_*+de^2VV_0M_4-e^2U(H_1+v_4M_4+v_6M_6).
+\end{align*}
+将这三个分子分别除以正量 \(d^2V\)、\(de^2\)、\(d^2e^2V\)，就得到 \(r_4-(r_2/v_2)v_4\)、\(L_0\)、\(L_1\)。
+
+先在 \(\Nfour\) 中代入 \(s=2+x\)，保留 \(\ellbound\) 为独立变量。所得多项式在变量 \(x,\ellbound\) 上系数非负，且常数项为正。
+
+对 \(\Nzero\) 和 \(\None\)，代入 \(s=2+x,\ \ellbound=rs^2\)。按 \(x\) 的次数收集，每个系数都是关于 \(r\) 的多项式 \(p(r)=\sum_{j=0}^{b}p_jr^j\)。下列两项检查覆盖 \(r\ge0\)。
+\begin{align*}
+ 0\le r<1/16\colon\quad
+ (1+y)^b p\!\left(\frac{y}{16(1+y)}\right)
+ &=\sum_{j=0}^b\frac{p_j}{16^j}y^j(1+y)^{b-j},\\
+ r\ge1/16\colon\quad
+ p\!\left(\frac{1+y}{16}\right)
+ &=\sum_{j=0}^b\frac{p_j}{16^j}(1+y)^j,
+ \qquad y\ge0.
+\end{align*}
+展开后检查 \(x,y\) 的系数。由于 \((1+y)^b>0\)，清分母保持每个 \(p(r)\) 的符号。对 \(x^0\) 对应的多项式，变换后的常数项为正，保证严格正性。
+
+\begin{center}
+\small
+\begin{tabular}{@{}llr@{}}
+\toprule
+分子 & 展开的变量或区间 & 非零系数数目\\
+\midrule
+\(\Nfour\) & \(x,\ellbound\ge0\) & 28\\
+\(\Nzero\) & \(x\ge0,\ 0\le r<1/16\) & 113\\
+\(\Nzero\) & \(x\ge0,\ r\ge1/16\) & 128\\
+\(\None\) & \(x\ge0,\ 0\le r<1/16\) & 206\\
+\(\None\) & \(x\ge0,\ r\ge1/16\) & 242\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+这五次展开的系数均为非负有理数，常数项均严格为正。配套脚本只使用 Python 标准库，可以用以下命令复核。
+\begin{center}
+\texttt{python verify\_binomial\_square\_proof.py}
+\end{center}
+式~\eqref{eq:identity} 的右侧因此严格为正。合并第 1 节的两个边界情形，定理得证。\hfill\(\square\)
+
+\begin{thebibliography}{9}
+  \bibitem{sun} Zhi-Wei Sun,
+  \emph{A family of polynomials and related congruences and series},
+  \href{https://arxiv.org/abs/2505.02767}{arXiv:2505.02767}。
+  \bibitem{chen} William Y. C. Chen, Robert L. Tang, Larry X. W. Wang, and Arthur L. B. Yang,
+  \emph{The \(q\)-Log-convexity of the Generating Functions of the Squares of Binomial Coefficients},
+  定理 1.1，\href{https://arxiv.org/abs/0810.2247}{arXiv:0810.2247}。
+\end{thebibliography}
+\end{document}

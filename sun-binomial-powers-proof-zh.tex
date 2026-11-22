@@ -1,0 +1,199 @@
+% !TeX program = xelatex
+% UTF-8. Compile with XeLaTeX or Tectonic.
+\documentclass[11pt,UTF8,fontset=fandol]{ctexart}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[unicode,hidelinks]{hyperref}
+\newcommand{\coef}[1]{[q^{#1}]}
+\title{孙智伟的二项式幂和猜想\\三次的证明与所有高次的反例}
+\date{}
+\begin{document}
+\maketitle
+
+令 \(R_n^{(m)}(q)=\sum_{k=0}^n\binom{n+k}{k}^{m}q^k\)。
+孙智伟的猜想 1.1(i) 断言这族多项式对每个整数 \(m\ge2\) 都是
+\(q\)-对数凸的\cite{sun}。结合此前的平方证明，本族在 \(m\ge2\) 中成立的幂次恰为
+\(m=2,3\)。本文证明三次成立，并证明当 \(m\ge4\) 且 \(n\ge23\) 时，
+差多项式的 \(q^2\) 系数严格为负。
+
+\section{四次以及任意更高次}
+
+对 \(n\ge3\)，置 \(t=n+1\)，并令
+\[
+ A=\frac{t^2-t}{2},\quad B=\frac{t^2+t}{2},\quad
+ C=\frac{t^2+3t+2}{2},\quad D=t^2-1,\quad E=t^2.
+\]
+直接提取系数得
+\[
+ L_m(t)=\coef{2}\bigl(R_{n-1}^{(m)}R_{n+1}^{(m)}-(R_n^{(m)})^2\bigr)
+ =A^m+C^m-2B^m+D^m-E^m.
+\]
+例如 \(L_4(24)=276^4+325^4-2\cdot300^4+575^4-576^4=-2999950\)。
+Zhou 已给出 \(L_5(8)=-499140\) 的反例\cite{zhou}，
+四次反例和高次最终为负也有公开记录\cite{mathdb}。
+下面给出对所有幂次统一适用的固定界。
+
+展开得
+\[
+ 16L_4(t)=-8t^6+168t^5+416t^4+360t^3+184t^2+96t+32.
+\]
+除以 \(t^6\) 后，右侧在 \(t>0\) 上严格递减，故 \(L_4(t)<0\) 对 \(t\ge24\) 成立。
+对 \(m\ge4\)，令 \(g(u)=(E-u)u^m\)，则
+\[
+ L_{m+1}(t)-E L_m(t)
+ =2g(B)-g(A)-g(C)-(E-D)D^m.
+\]
+在区间 \([A,C]\) 上，由 \(C/E\le3/5\le(m-1)/(m+1)\) 及
+\[
+ g''(u)=m u^{m-2}\bigl((m-1)E-(m+1)u\bigr),\qquad
+ g'(u)=u^{m-1}\bigl(mE-(m+1)u\bigr)
+\]
+可知 \(g\) 凸且递增。又 \(A+C=2B+1\)，故
+\(2g(B)\le g(A)+g(C)\)。于是 \(L_{m+1}(t)<E L_m(t)\)，归纳即得结论。
+
+若把底数改为普通二项式系数 \(\binom nk\)，仍可用上述比较式。
+这时取 \(A=(n-1)(n-2)/2,\ B=n(n-1)/2,\ C=n(n+1)/2,\ D=n^2-1,\ E=n^2\)。
+四次的系数为 \(L_4(-n)\)，从展开式可直接看出当 \(n\ge3\) 时它为负。
+当 \(n\ge5\) 时 \(C/E\le3/5\)，所以同样归纳得到普通二项式幂和在
+每个 \(m\ge4\)、每个 \(n\ge5\) 上都有负的 \(q^2\) 系数。
+
+\section{三次的证明}
+
+在本节记 \(P_n=R_n^{(3)}\) 及 \(\Delta=\coef d(P_{n-1}P_{n+1}-P_n^2)\)。
+常数项相消，\(n=1\) 时差多项式为 \(11q+152q^2\)。以下设 \(n\ge2\)。
+若 \(d=2n\) 或 \(2n-1\)，把 \(P_n^2\) 中 \(i+j=d\) 的每对下标
+配到 \(P_{n-1}P_{n+1}\) 中的 \((i-1,j+1)\)。立方前的二项式乘积之比为
+\[
+ \rho_{ij}=\frac{ni(n+j+1)(n+j+2)}
+ {(n+1)(j+1)(n+i-1)(n+i)}.
+\]
+有 \(\rho_{ij}\rho_{ji}=\rho_{ii}\rho_{jj}\)，而当 \(n-k\in\{0,1\}\) 时，
+\(\rho_{kk}\) 分子减分母为 \((n+k)(1-(n-k)^2)+2nk>0\)。
+交换下标后的权重相等，算术与几何平均值不等式给出
+\((\rho_{ij}^3+\rho_{ji}^3)/2>1\)。故这两个次数的系数都为正。
+
+\subsection{代数恒等式}
+
+以下取 \(1\le d\le2n-2\)。记
+\begin{gather*}
+ z=d/2,\quad a=n+z,\quad b=az,\quad K=n^6(n+1)^3,\\
+ j=d-i,\quad t=i-z,\qquad W_i=\left(\binom{n-1+i}{i}\binom{n-1+j}{j}\right)^3.
+\end{gather*}
+将两个卷积在相同下标区间内相减，再对交换 \(i,j\) 取平均。
+乘以 \(K\) 后，该区间内的差可写成 \(\sum_i W_i A(t)\)，其中
+\[
+ A(t)=\frac{n^3}{2}\sum_{\varepsilon=\pm1}
+ \bigl((a+\varepsilon t)(a+1+\varepsilon t)\bigr)^3
+ -(n+1)^3(a^2-t^2)^3.
+\]
+定义
+\begin{align*}
+ U&=(b-t^2-nt)^3,& V&=(b-t^2+nt)^3,\\
+ f&=2t+1,&g&=2t-1,\\
+ D(t)&=Uf-Vg,& E(t)&=U(f^3-f)-V(g^3-g).
+\end{align*}
+因为 \(U=((n+i)j)^3,\ V=(i(n+j))^3\)，有
+\(W_i((n+i)j)^3=W_{i+1}((i+1)(n+j-1))^3\)。
+因此 \(\sum_i W_iD(t)\) 与 \(\sum_i W_iE(t)\) 都只留下端点。
+
+令 \(H=2z^2,\ u=(n+1)a,\ C=3u^2-3uz+z^2\)，并定义
+\[
+ J=HA+CD,\qquad F=[t^2]E=24b^2(b-n),\qquad J_2=[t^2]J.
+\]
+\(J,E\) 的常数项为零。消去二次项后得到偶多项式
+\[
+ T(t)=FJ-J_2E=t^4(r_4+r_6t^2+r_8t^4).
+\]
+在下文使用此恒等式的区域内，\(b>n\)，故 \(F>0\)。
+
+若 \(0\le t^2\le h\)，令 \(\lambda=t^2/h\)。将下列三个量记为
+\[
+ B_0=r_4,\qquad B_1=r_4+\tfrac12r_6h,\qquad B_2=r_4+r_6h+r_8h^2.
+\]
+则 \(T(t)=t^4((1-\lambda)^2B_0+2\lambda(1-\lambda)B_1+\lambda^2 B_2)\)。
+所以这三个量都为正即可推出 \(T(t)\ge0\)，且在 \(t\ne0\) 时严格为正。
+
+\subsection{低次系数}
+
+若 \(d<n\)，两个卷积的下标范围都是 \(0\le i\le d\)。
+若 \(d=1,2,3\)，对 \(u_0=n+1\) 直接得到
+\[
+ \Delta=
+ \begin{cases}
+ 6u_0,&d=1,\\
+ 3u_0(u_0+1)(u_0^2+9u_0+6)/4,&d=2,\\
+ u_0(u_0+1)^3(2u_0^3-u_0^2+20u_0+24)/6,&d=3.
+ \end{cases}
+\]
+其余情形取 \(h=z^2\)。用 \(z=2+x,\ n=2z+1+y\) 覆盖整个区域。
+代入后，各 \(B_0,B_1,B_2\) 在 \(x,y\) 中分别有 99 个非零系数，
+均为正，且常数项都为正。
+两项加权端点均为零，因此 \(HFK\Delta=\sum_iW_iT(i-z)>0\)。
+
+\subsection{高次系数}
+
+设 \(n\le d\le 2n-2\)，记 \(s=2n-d,\ \ell=d-n\)。
+令 \(X_i=\bigl(\binom{n-1+i}{i}\binom{n+1+j}{j}\bigr)^3\)，
+\(Y_i=\bigl(\binom{n+i}{i}\binom{n+j}{j}\bigr)^3\)，并约定
+\(\ell=0\) 时 \(X_{\ell-1}=0\)。则
+\[
+ \Delta=\sum_{i=\ell}^n(X_i-Y_i)+X_{\ell-1}-X_n .
+\]
+令 \(G=2(s+1)(2n\ell)^3\)。
+由阶乘比及端点相消，
+\begin{align*}
+ \frac{K X_{\ell-1}}{W_n}&=\left(\frac{4n^2(2n+1)\ell}{d-1}\right)^3,&
+ \frac{K X_n}{W_n}&=\bigl(nd(d+1)\bigr)^3,\\
+ \frac{\sum_i W_iD(i-z)}{W_n}&=G,&
+ \frac{\sum_i W_iE(i-z)}{W_n}&=Gs(s+2).
+\end{align*}
+取 \(h=s^2/4\)，并代入 \(s=2+x,\ \ell=y,\ n=s+\ell,\ z=s/2+\ell\)。
+三个 \(B_j\) 都有 105 个非零系数，均为正，且常数项都为正。
+相邻项比值表明 \(i\mapsto\binom{n-1+i}{i}\) 对数凹。
+所以 \(W_i\) 在区间 \([\ell,n]\) 上对称且对数凹，从而 \(W_i\ge W_n\)。
+由 \(T(t)\ge0\) 得
+\[
+ \sum_{i=\ell}^n \frac{W_i}{W_n}T(i-z)\ge r_4M_4+r_6M_6+r_8M_8,
+ \qquad M_v=\sum_{k=0}^s(k-s/2)^v .
+\]
+核验脚本用 \(M_v(s+2)-M_v(s)=2((s+2)/2)^v\) 和两个起点
+核对各矩的多项式表达式。
+
+综合上述恒等式，\(HFK(d-1)^3\Delta/W_n\) 至少为
+\begin{align*}
+ \mathcal B={}&HF\left((4n^2(2n+1)\ell)^3-(nd(d+1))^3(d-1)^3\right)\\
+ &+(d-1)^3\left(-FCG+J_2Gs(s+2)+r_4M_4+r_6M_6+r_8M_8\right).
+\end{align*}
+按 \(s=2+x,\ \ell=y\) 展开，\(\mathcal B\) 有 244 个非零项，
+仅下表三项的系数为负。表中 \((i,j)\) 表示单项式 \(x^iy^j\) 的指数对。
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+负项指数 & 系数 & 正项指数 & 系数 & 正项指数 & 系数\\
+\midrule
+\((3,17)\)&\(-24576\)&\((1,18)\)&\(294912\)&\((5,16)\)&\(36864/5\)\\
+\((4,16)\)&\(-190464\)&\((2,17)\)&\(3317760\)&\((6,15)\)&\(82944\)\\
+\((5,15)\)&\(-1491456/5\)&\((3,16)\)&\(17160192\)&\((7,14)\)&\(3050112/7\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+每行负项的指数是两个正项指数的中点，两个正系数乘积的四倍至少等于
+负系数的平方。算术与几何平均值不等式保证每组三项之和非负。
+移去这三组后，其余 235 个非零系数均为正，且常数项 \(9704448>0\)。
+故 \(\mathcal B>0\)，从而 \(\Delta>0\)。这就完成了三次的证明。
+
+上述展开均可用附带的标准库脚本复核，命令为
+\verb|python verify_sun_binomial_cubic.py|。各检查是多项式恒等式或
+整个非负象限上的符号证书。
+
+\begin{thebibliography}{9}
+\bibitem{sun} Z.-W. Sun, \emph{A family of polynomials and related congruences and series},
+Conjecture 1.1, \url{https://arxiv.org/abs/2505.02767}.
+\bibitem{zhou} Q. Zhou, answer to Z.-W. Sun's MathOverflow question,
+\url{https://mathoverflow.net/questions/479301/}.
+\bibitem{mathdb} MathDB, \emph{Sun's q-log-convexity conjecture for binomial sums and the polynomials},
+\href{https://mathdb.com/p/368293/sun-s-q-log-convexity-conjecture-for-binomial-sums-and-the-p}{problem 368293}.
+\end{thebibliography}
+\end{document}
